@@ -42,7 +42,7 @@ CREATE TABLE `Result` (
   PRIMARY KEY  (`uid`)
 );
 
-CREATE TABLE `gamePlayerShot` (
+CREATE TABLE `GamePlayerShot` (
   `uid` INT NOT NULL AUTO_INCREMENT,
   `gameId` INT,
   `playerId` INT,
@@ -60,9 +60,9 @@ ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk1` FOREIGN KEY (`g
 ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk2` FOREIGN KEY (`playerId`) REFERENCES GamePlayer(`playerId`);
 ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk3` FOREIGN KEY (`shipId`) REFERENCES Ship(`uid`);
 
-ALTER TABLE `gamePlayerShot` ADD CONSTRAINT `gamePlayerShot_fk1` FOREIGN KEY (`gameId`) REFERENCES GamePlayer(`gameId`);
-ALTER TABLE `gamePlayerShot` ADD CONSTRAINT `gamePlayerShot_fk2` FOREIGN KEY (`playerId`) REFERENCES GamePlayer(`playerId`);
-ALTER TABLE `gamePlayerShot` ADD CONSTRAINT `gamePlayerShot_fk3` FOREIGN KEY (`resultId`) REFERENCES Result(`uid`);
+ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk1` FOREIGN KEY (`gameId`) REFERENCES GamePlayer(`gameId`);
+ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk2` FOREIGN KEY (`playerId`) REFERENCES GamePlayer(`playerId`);
+ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk3` FOREIGN KEY (`resultId`) REFERENCES Result(`uid`);
 
 INSERT INTO Ship(name, length, points) VALUES("Patrol boat", 2, 20);
 INSERT INTO Ship(name, length, points) VALUES("Destroyer", 3, 30);
