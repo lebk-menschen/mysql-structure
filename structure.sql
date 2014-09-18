@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS Battleship;
 
 CREATE DATABASE IF NOT EXISTS Battleship 
  DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';
-
+ 
 USE Battleship;
 
 CREATE TABLE `Game` (
