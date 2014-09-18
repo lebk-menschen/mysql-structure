@@ -1,15 +1,16 @@
+CREATE DATABASE IF NOT EXISTS Battleship 
+ DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci'
+
 CREATE TABLE `Game` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `datePlayed` TIMESTAMP,
   `timePlayed` TIMESTAMP,
-  `winnerPlayerId` INT,
-  PRIMARY KEY  (`uid`)
+  `winnerPlayerId` INT
 );
 
 CREATE TABLE `Player` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR,
-  PRIMARY KEY  (`uid`)
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` TEXT
 );
 
 CREATE TABLE `GamePlayer` (
@@ -19,49 +20,45 @@ CREATE TABLE `GamePlayer` (
 );
 
 CREATE TABLE `Ship` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR,
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` TEXT,
   `length` INT,
-  `points` INT,
-  PRIMARY KEY  (`uid`)
+  `points` INT
 );
 
 CREATE TABLE `GamePlayerShip` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `gameId` INT,
   `playerId` INT,
   `shipId` INT,
   `line` TEXT,
-  `hits` INT,
-  PRIMARY KEY  (`uid`)
+  `hits` INT
 );
 
 CREATE TABLE `Result` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
-  `description` VARCHAR,
-  PRIMARY KEY  (`uid`)
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `description` TEXT
 );
 
 CREATE TABLE `GamePlayerShot` (
-  `uid` INT NOT NULL AUTO_INCREMENT,
+  `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `gameId` INT,
   `playerId` INT,
   `point` TEXT,
-  `resultId` INT,
-  PRIMARY KEY  (`uid`)
+  `resultId` INT
 );
 
-ALTER TABLE `Game` ADD CONSTRAINT `Game_fk1` FOREIGN KEY (`winnerPlayerId`) REFERENCES GamePlayer(`playerId`);
+ALTER TABLE `Game` ADD CONSTRAINT `Game_fk1` FOREIGN KEY (`winnerPlayerId`) REFERENCES Player(`uid`);
 
 ALTER TABLE `GamePlayer` ADD CONSTRAINT `GamePlayer_fk1` FOREIGN KEY (`gameId`) REFERENCES Game(`uid`);
 ALTER TABLE `GamePlayer` ADD CONSTRAINT `GamePlayer_fk2` FOREIGN KEY (`playerId`) REFERENCES Player(`uid`);
 
-ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk1` FOREIGN KEY (`gameId`) REFERENCES GamePlayer(`gameId`);
-ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk2` FOREIGN KEY (`playerId`) REFERENCES GamePlayer(`playerId`);
+ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk1` FOREIGN KEY (`gameId`) REFERENCES Game(`uid`);
+ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk2` FOREIGN KEY (`playerId`) REFERENCES Player(`uid`);
 ALTER TABLE `GamePlayerShip` ADD CONSTRAINT `GamePlayerShip_fk3` FOREIGN KEY (`shipId`) REFERENCES Ship(`uid`);
 
-ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk1` FOREIGN KEY (`gameId`) REFERENCES GamePlayer(`gameId`);
-ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk2` FOREIGN KEY (`playerId`) REFERENCES GamePlayer(`playerId`);
+ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk1` FOREIGN KEY (`gameId`) REFERENCES Game(`uid`);
+ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk2` FOREIGN KEY (`playerId`) REFERENCES Player(`uid`);
 ALTER TABLE `GamePlayerShot` ADD CONSTRAINT `GamePlayerShot_fk3` FOREIGN KEY (`resultId`) REFERENCES Result(`uid`);
 
 INSERT INTO Ship(name, length, points) VALUES("Patrol boat", 2, 20);
