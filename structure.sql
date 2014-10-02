@@ -14,7 +14,8 @@ CREATE TABLE `Game` (
 
 CREATE TABLE `Player` (
   `uid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` TEXT
+  `name` TEXT,
+  `password` TEXT
 );
 
 CREATE TABLE `GamePlayer` (
