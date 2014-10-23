@@ -79,9 +79,9 @@ INSERT INTO Result(description) VALUES("Won");
 INSERT INTO Result(description) VALUES("ERROR");
 
 
-INSERT INTO Player(name, password) VALUES("Robin", "098f6bcd4621d373cade4e832627b4f6"); --test
-INSERT INTO Player(name, password) VALUES("Freddy", "5a105e8b9d40e1329780d62ea2265d8a"); --test1
-INSERT INTO Player(name, password) VALUES("Felix", "ad0234829205b9033196ba818f7a872b"); --test2
-INSERT INTO Player(name, password) VALUES("Lukas", "8ad8757baa8564dc136c1e07507f4a98"); --tes3
-INSERT INTO Player(name, password) VALUES("Svenja", "86985e105f79b95d6bc918fb45ec7727"); --tes4
-INSERT INTO Player(name, password) VALUES("Andreas", "e3d704f3542b44a621ebed70dc0efe13"); --test5
+INSERT INTO Player(name, password) VALUES("Robin", "098f6bcd4621d373cade4e832627b4f6"); 
+INSERT INTO Player(name, password) VALUES("Freddy", "5a105e8b9d40e1329780d62ea2265d8a"); 
+INSERT INTO Player(name, password) VALUES("Felix", "ad0234829205b9033196ba818f7a872b"); 
+INSERT INTO Player(name, password) VALUES("Lukas", "8ad8757baa8564dc136c1e07507f4a98"); 
+INSERT INTO Player(name, password) VALUES("Svenja", "86985e105f79b95d6bc918fb45ec7727"); 
+INSERT INTO Player(name, password) VALUES("Andreas", "e3d704f3542b44a621ebed70dc0efe13"); 
